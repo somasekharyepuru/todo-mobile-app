@@ -1,0 +1,91 @@
+mutation Login($user: LoginDto!) {
+  login(user: $user) {
+    id
+    accessToken
+    refreshToken
+    first_name
+    last_name
+    email
+    phone
+    is_active
+    is_verified
+    is_profile_updated
+    role {
+      id
+      name
+      code
+      description
+    }
+    created_at
+    updated_at
+    expires_at
+  }
+}
+mutation Logout {
+  logout {
+    success
+    message
+  }
+}
+
+mutation Register($user: RegisterUserDto!) {
+  register(user: $user) {
+    message
+    success
+    is_verified
+    is_profile_updated
+    accessToken
+    refreshToken
+  }
+}
+mutation ResendOtp($email: String!) {
+  resendOtp(email: $email) {
+    success
+    message
+  }
+}
+
+mutation VerifyOtp($input: VerifyOtpDTO!) {
+  verifyOtp(input: $input) {
+    success
+    message
+    token
+    expires_at
+  }
+}
+
+mutation FinishSignUp($user: UpdateProfileDto!) {
+  finishSignUp(user: $user) {
+    id
+    first_name
+    last_name
+    email
+    phone
+    is_active
+    is_verified
+    is_profile_updated
+    role {
+      name
+      id
+      description
+      code
+    }
+    created_at
+    updated_at
+    accessToken
+    refreshToken
+  }
+}
+mutation ForgotPassword($email: String!) {
+  forgotPassword(email: $email) {
+    success
+    message
+  }
+}
+
+mutation ResetPassword($input: ResetPasswordDto!) {
+  resetPassword(input: $input) {
+    success
+    message
+  }
+}
